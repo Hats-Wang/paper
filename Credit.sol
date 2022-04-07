@@ -4,6 +4,8 @@ function getSigner(uint index)public constant returns(address){}
 function getSignersSize() public constant returns(uint){}
 }
 
+import "./Borrow.sol";
+
 contract Credit{
     
     int256 grade;
@@ -15,7 +17,8 @@ contract Credit{
     bytes32[] _s;
     address[] signers;
     address public signersAddr;
-    
+    address addBorrow;
+ 
         event addSignaturesEvent(int256 grd, string name, bool p, int256 vl, uint8 v, bytes32 r, bytes32 s);
         event newSignaturesEvent(int256 grd, string name, bool p, int256 vl, uint8 v, bytes32 r, bytes32 s,address addr);
         event errorNewSignaturesEvent(int256 grd, string name, bool p, int256 vl, uint8 v, bytes32 r, bytes32 s,address addr);
@@ -35,6 +38,7 @@ contract Credit{
            companyName = name;
            pledge = p;
            value = vl;
+           addBorrow = address(0);
            _v.push(v);
            _r.push(r);
            _s.push(s);
@@ -55,7 +59,8 @@ contract Credit{
          {
              signerList[i] = (CreditSignersDataABI(signersAddr).getSigner(i));
          }
-        return(grade,companyName,pledge,value,_v,_r,_s,signerList);
+         int256 g = this.getGrade();
+        return(g,companyName,pledge,value,_v,_r,_s,signerList);
     }
 
     function addSignatures(uint8 v, bytes32 r, bytes32 s) public returns(bool) {
@@ -111,7 +116,12 @@ contract Credit{
     }
 
     function getGrade() public constant returns(int256){
-         return grade;
+        if(addBorrow == address(0)){
+             return grade;
+        }
+        Borrow b = Borrow(addBorrow);
+        b.violate(); 
+        return grade;
     }
 
     function getCompanyName() public constant returns(string){
@@ -128,5 +138,13 @@ contract Credit{
 
     function setGrade(int256 grd)public{
         grade = grd;
+    }
+
+    function setBorrow(address add)public{
+        addBorrow = add;
+    }
+
+    function getBorrow()public constant returns(address){
+        return addBorrow;
     }
 }

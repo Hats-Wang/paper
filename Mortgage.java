@@ -89,8 +89,8 @@ public class Mortgage extends Contract {
     public RemoteCall<TransactionReceipt> mortgage(String add, BigInteger num) {
         final Function function = new Function(
                 FUNC_MORTGAGE, 
-                Arrays.<Type>asList(new Address(add),
-                new Int256(num)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(add), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(num)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -98,8 +98,8 @@ public class Mortgage extends Contract {
     public void mortgage(String add, BigInteger num, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_MORTGAGE, 
-                Arrays.<Type>asList(new Address(add),
-                new Int256(num)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(add), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(num)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -107,8 +107,8 @@ public class Mortgage extends Contract {
     public String mortgageSeq(String add, BigInteger num) {
         final Function function = new Function(
                 FUNC_MORTGAGE, 
-                Arrays.<Type>asList(new Address(add),
-                new Int256(num)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(add), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(num)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -145,24 +145,24 @@ public class Mortgage extends Contract {
     }
 
     public static RemoteCall<Mortgage> deploy(Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider, Boolean b) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Bool(b)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(b)));
         return deployRemoteCall(Mortgage.class, web3j, credentials, contractGasProvider, getBinary(), encodedConstructor);
     }
 
     public static RemoteCall<Mortgage> deploy(Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider, Boolean b) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Bool(b)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(b)));
         return deployRemoteCall(Mortgage.class, web3j, transactionManager, contractGasProvider, getBinary(), encodedConstructor);
     }
 
     @Deprecated
     public static RemoteCall<Mortgage> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, Boolean b) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Bool(b)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(b)));
         return deployRemoteCall(Mortgage.class, web3j, credentials, gasPrice, gasLimit, getBinary(), encodedConstructor);
     }
 
     @Deprecated
     public static RemoteCall<Mortgage> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, Boolean b) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Bool(b)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(b)));
         return deployRemoteCall(Mortgage.class, web3j, transactionManager, gasPrice, gasLimit, getBinary(), encodedConstructor);
     }
 }

@@ -99,12 +99,7 @@ public class Main {
                     System.out.println("company is mortgaged abortively!");
                 break;
 
-            case "redeem":
-                //传入参数为1.私钥文件名 2.keyStorePassword 3.keyPassword 4.newCredit返回地址 5.Mortgage返回地址
-                Mortgage mor2 = app.loadMortgage(args[1], args[2], args[3],args[5]);
-                mor2.redeem(args[4]).send();
-                System.out.println("company is redeemed successfully!");
-                break;
+
             case "getPublicKey":
                 String publicKey = app.getPublicKey(args[1], args[2], args[3]);
                 System.out.println("---------publicKey:" + publicKey);

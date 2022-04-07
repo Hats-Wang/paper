@@ -82,7 +82,7 @@ public class BcosApp {
             creditSignersData = CreditSignersData.deploy(web3j, credentials, new StaticGasProvider(gasPrice, gasLimited), arrayList).send();
 			String address = creditSignersData.getContractAddress();
 			System.out.println("-----------deploy SignersData Contract success, address: " + address);
-			Mortgage mor  = Mortgage.deploy(web3j, credentials,new StaticGasProvider(gasPrice, gasLimited)).send();
+			Mortgage mor  = Mortgage.deploy(web3j, credentials,new StaticGasProvider(gasPrice, gasLimited), true).send();
 			address = mor.getContractAddress();
 			System.out.println("-----------deploy Mortgage Contract success, address: " + address);
         } catch (Exception e) {

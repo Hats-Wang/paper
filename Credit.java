@@ -142,7 +142,7 @@ public class Credit extends Contract {
     public RemoteCall<TransactionReceipt> setGrade(BigInteger grd) {
         final Function function = new Function(
                 FUNC_SETGRADE, 
-                Arrays.<Type>asList(new Int256(grd)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -150,7 +150,7 @@ public class Credit extends Contract {
     public void setGrade(BigInteger grd, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_SETGRADE, 
-                Arrays.<Type>asList(new Int256(grd)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -158,7 +158,7 @@ public class Credit extends Contract {
     public String setGradeSeq(BigInteger grd) {
         final Function function = new Function(
                 FUNC_SETGRADE, 
-                Arrays.<Type>asList(new Int256(grd)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -192,7 +192,7 @@ public class Credit extends Contract {
     public RemoteCall<TransactionReceipt> setBorrow(String add) {
         final Function function = new Function(
                 FUNC_SETBORROW, 
-                Arrays.<Type>asList(new Address(add)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(add)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -200,7 +200,7 @@ public class Credit extends Contract {
     public void setBorrow(String add, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_SETBORROW, 
-                Arrays.<Type>asList(new Address(add)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(add)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -208,7 +208,7 @@ public class Credit extends Contract {
     public String setBorrowSeq(String add) {
         final Function function = new Function(
                 FUNC_SETBORROW, 
-                Arrays.<Type>asList(new Address(add)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(add)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -242,9 +242,9 @@ public class Credit extends Contract {
     public RemoteCall<TransactionReceipt> addSignatures(BigInteger v, byte[] r, byte[] s) {
         final Function function = new Function(
                 FUNC_ADDSIGNATURES, 
-                Arrays.<Type>asList(new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -252,9 +252,9 @@ public class Credit extends Contract {
     public void addSignatures(BigInteger v, byte[] r, byte[] s, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_ADDSIGNATURES, 
-                Arrays.<Type>asList(new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -262,9 +262,9 @@ public class Credit extends Contract {
     public String addSignaturesSeq(BigInteger v, byte[] r, byte[] s) {
         final Function function = new Function(
                 FUNC_ADDSIGNATURES, 
-                Arrays.<Type>asList(new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -298,7 +298,7 @@ public class Credit extends Contract {
     public RemoteCall<TransactionReceipt> setValue(BigInteger v) {
         final Function function = new Function(
                 FUNC_SETVALUE, 
-                Arrays.<Type>asList(new Int256(v)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(v)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -306,7 +306,7 @@ public class Credit extends Contract {
     public void setValue(BigInteger v, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_SETVALUE, 
-                Arrays.<Type>asList(new Int256(v)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(v)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -314,7 +314,7 @@ public class Credit extends Contract {
     public String setValueSeq(BigInteger v) {
         final Function function = new Function(
                 FUNC_SETVALUE, 
-                Arrays.<Type>asList(new Int256(v)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(v)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -371,7 +371,7 @@ public class Credit extends Contract {
     public RemoteCall<TransactionReceipt> setPledge(Boolean p) {
         final Function function = new Function(
                 FUNC_SETPLEDGE, 
-                Arrays.<Type>asList(new Bool(p)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(p)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -379,7 +379,7 @@ public class Credit extends Contract {
     public void setPledge(Boolean p, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_SETPLEDGE, 
-                Arrays.<Type>asList(new Bool(p)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(p)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -387,7 +387,7 @@ public class Credit extends Contract {
     public String setPledgeSeq(Boolean p) {
         final Function function = new Function(
                 FUNC_SETPLEDGE, 
-                Arrays.<Type>asList(new Bool(p)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Bool(p)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -413,7 +413,7 @@ public class Credit extends Contract {
 
     public RemoteCall<Boolean> CallVerify(String addr) {
         final Function function = new Function(FUNC_CALLVERIFY, 
-                Arrays.<Type>asList(new Address(addr)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(addr)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -426,9 +426,9 @@ public class Credit extends Contract {
     }
 
     public List<AddSignaturesEventEventResponse> getAddSignaturesEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ADDSIGNATURESEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ADDSIGNATURESEVENT_EVENT, transactionReceipt);
         ArrayList<AddSignaturesEventEventResponse> responses = new ArrayList<AddSignaturesEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             AddSignaturesEventEventResponse typedResponse = new AddSignaturesEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.grd = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -454,9 +454,9 @@ public class Credit extends Contract {
     }
 
     public List<NewSignaturesEventEventResponse> getNewSignaturesEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(NEWSIGNATURESEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(NEWSIGNATURESEVENT_EVENT, transactionReceipt);
         ArrayList<NewSignaturesEventEventResponse> responses = new ArrayList<NewSignaturesEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             NewSignaturesEventEventResponse typedResponse = new NewSignaturesEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.grd = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -483,9 +483,9 @@ public class Credit extends Contract {
     }
 
     public List<ErrorNewSignaturesEventEventResponse> getErrorNewSignaturesEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ERRORNEWSIGNATURESEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ERRORNEWSIGNATURESEVENT_EVENT, transactionReceipt);
         ArrayList<ErrorNewSignaturesEventEventResponse> responses = new ArrayList<ErrorNewSignaturesEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             ErrorNewSignaturesEventEventResponse typedResponse = new ErrorNewSignaturesEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.grd = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -512,9 +512,9 @@ public class Credit extends Contract {
     }
 
     public List<ErrorAddSignaturesEventEventResponse> getErrorAddSignaturesEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ERRORADDSIGNATURESEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ERRORADDSIGNATURESEVENT_EVENT, transactionReceipt);
         ArrayList<ErrorAddSignaturesEventEventResponse> responses = new ArrayList<ErrorAddSignaturesEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             ErrorAddSignaturesEventEventResponse typedResponse = new ErrorAddSignaturesEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.grd = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -541,9 +541,9 @@ public class Credit extends Contract {
     }
 
     public List<AddRepeatSignaturesEventEventResponse> getAddRepeatSignaturesEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ADDREPEATSIGNATURESEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ADDREPEATSIGNATURESEVENT_EVENT, transactionReceipt);
         ArrayList<AddRepeatSignaturesEventEventResponse> responses = new ArrayList<AddRepeatSignaturesEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             AddRepeatSignaturesEventEventResponse typedResponse = new AddRepeatSignaturesEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.grd = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -569,9 +569,9 @@ public class Credit extends Contract {
     }
 
     public List<ErrorRepeatSignaturesEventEventResponse> getErrorRepeatSignaturesEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ERRORREPEATSIGNATURESEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ERRORREPEATSIGNATURESEVENT_EVENT, transactionReceipt);
         ArrayList<ErrorRepeatSignaturesEventEventResponse> responses = new ArrayList<ErrorRepeatSignaturesEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             ErrorRepeatSignaturesEventEventResponse typedResponse = new ErrorRepeatSignaturesEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.grd = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -616,56 +616,56 @@ public class Credit extends Contract {
     }
 
     public static RemoteCall<Credit> deploy(Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider, BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s, String addr, String sender) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s),
-                new Address(addr),
-                new Address(sender)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(addr), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(sender)));
         return deployRemoteCall(Credit.class, web3j, credentials, contractGasProvider, getBinary(), encodedConstructor);
     }
 
     public static RemoteCall<Credit> deploy(Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider, BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s, String addr, String sender) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s),
-                new Address(addr),
-                new Address(sender)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(addr), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(sender)));
         return deployRemoteCall(Credit.class, web3j, transactionManager, contractGasProvider, getBinary(), encodedConstructor);
     }
 
     @Deprecated
     public static RemoteCall<Credit> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s, String addr, String sender) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s),
-                new Address(addr),
-                new Address(sender)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(addr), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(sender)));
         return deployRemoteCall(Credit.class, web3j, credentials, gasPrice, gasLimit, getBinary(), encodedConstructor);
     }
 
     @Deprecated
     public static RemoteCall<Credit> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s, String addr, String sender) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s),
-                new Address(addr),
-                new Address(sender)));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(addr), 
+                new org.fisco.bcos.web3j.abi.datatypes.Address(sender)));
         return deployRemoteCall(Credit.class, web3j, transactionManager, gasPrice, gasLimit, getBinary(), encodedConstructor);
     }
 

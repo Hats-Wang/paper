@@ -103,14 +103,14 @@ public class CreditSignersData extends Contract {
 
     public RemoteCall<String> getSigner(BigInteger index) {
         final Function function = new Function(FUNC_GETSIGNER, 
-                Arrays.<Type>asList(new Uint256(index)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteCall<Boolean> verify(String addr) {
         final Function function = new Function(FUNC_VERIFY, 
-                Arrays.<Type>asList(new Address(addr)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.Address(addr)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -118,13 +118,13 @@ public class CreditSignersData extends Contract {
     public RemoteCall<TransactionReceipt> newCredit(BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s) {
         final Function function = new Function(
                 FUNC_NEWCREDIT, 
-                Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -132,13 +132,13 @@ public class CreditSignersData extends Contract {
     public void newCredit(BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s, TransactionSucCallback callback) {
         final Function function = new Function(
                 FUNC_NEWCREDIT, 
-                Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         asyncExecuteTransaction(function, callback);
     }
@@ -146,13 +146,13 @@ public class CreditSignersData extends Contract {
     public String newCreditSeq(BigInteger grd, String name, Boolean p, BigInteger vl, BigInteger v, byte[] r, byte[] s) {
         final Function function = new Function(
                 FUNC_NEWCREDIT, 
-                Arrays.<Type>asList(new Int256(grd),
-                new Utf8String(name),
-                new Bool(p),
-                new Int256(vl),
-                new Uint8(v),
-                new Bytes32(r),
-                new Bytes32(s)),
+                Arrays.<Type>asList(new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(grd), 
+                new org.fisco.bcos.web3j.abi.datatypes.Utf8String(name), 
+                new org.fisco.bcos.web3j.abi.datatypes.Bool(p), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Int256(vl), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Uint8(v), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(r), 
+                new org.fisco.bcos.web3j.abi.datatypes.generated.Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         return createTransactionSeq(function);
     }
@@ -210,9 +210,9 @@ public class CreditSignersData extends Contract {
     }
 
     public List<NewCreditEventEventResponse> getNewCreditEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = extractEventParametersWithLog(NEWCREDITEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(NEWCREDITEVENT_EVENT, transactionReceipt);
         ArrayList<NewCreditEventEventResponse> responses = new ArrayList<NewCreditEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             NewCreditEventEventResponse typedResponse = new NewCreditEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.addr = (String) eventValues.getNonIndexedValues().get(0).getValue();
@@ -250,28 +250,28 @@ public class CreditSignersData extends Contract {
     }
 
     public static RemoteCall<CreditSignersData> deploy(Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider, List<String> creditSigners) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()? DynamicArray.empty("address[]"):new DynamicArray<Address>(
-                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, Address.class))));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()?org.fisco.bcos.web3j.abi.datatypes.DynamicArray.empty("address[]"):new org.fisco.bcos.web3j.abi.datatypes.DynamicArray<org.fisco.bcos.web3j.abi.datatypes.Address>(
+                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, org.fisco.bcos.web3j.abi.datatypes.Address.class))));
         return deployRemoteCall(CreditSignersData.class, web3j, credentials, contractGasProvider, getBinary(), encodedConstructor);
     }
 
     public static RemoteCall<CreditSignersData> deploy(Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider, List<String> creditSigners) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()? DynamicArray.empty("address[]"):new DynamicArray<Address>(
-                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, Address.class))));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()?org.fisco.bcos.web3j.abi.datatypes.DynamicArray.empty("address[]"):new org.fisco.bcos.web3j.abi.datatypes.DynamicArray<org.fisco.bcos.web3j.abi.datatypes.Address>(
+                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, org.fisco.bcos.web3j.abi.datatypes.Address.class))));
         return deployRemoteCall(CreditSignersData.class, web3j, transactionManager, contractGasProvider, getBinary(), encodedConstructor);
     }
 
     @Deprecated
     public static RemoteCall<CreditSignersData> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, List<String> creditSigners) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()? DynamicArray.empty("address[]"):new DynamicArray<Address>(
-                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, Address.class))));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()?org.fisco.bcos.web3j.abi.datatypes.DynamicArray.empty("address[]"):new org.fisco.bcos.web3j.abi.datatypes.DynamicArray<org.fisco.bcos.web3j.abi.datatypes.Address>(
+                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, org.fisco.bcos.web3j.abi.datatypes.Address.class))));
         return deployRemoteCall(CreditSignersData.class, web3j, credentials, gasPrice, gasLimit, getBinary(), encodedConstructor);
     }
 
     @Deprecated
     public static RemoteCall<CreditSignersData> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, List<String> creditSigners) {
-        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()? DynamicArray.empty("address[]"):new DynamicArray<Address>(
-                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, Address.class))));
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(creditSigners.isEmpty()?org.fisco.bcos.web3j.abi.datatypes.DynamicArray.empty("address[]"):new org.fisco.bcos.web3j.abi.datatypes.DynamicArray<org.fisco.bcos.web3j.abi.datatypes.Address>(
+                        org.fisco.bcos.web3j.abi.Utils.typeMap(creditSigners, org.fisco.bcos.web3j.abi.datatypes.Address.class))));
         return deployRemoteCall(CreditSignersData.class, web3j, transactionManager, gasPrice, gasLimit, getBinary(), encodedConstructor);
     }
 
