@@ -10,6 +10,7 @@ import java.security.SignatureException;
 import java.security.interfaces.ECPrivateKey;
 import java.util.*;
 
+import org.bcos.credit.web3j.Borrow;
 import org.bcos.credit.web3j.Mortgage;
 import org.fisco.bcos.channel.client.Service;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,8 +21,7 @@ import org.bcos.credit.sample.PublicAddressConf;
 import org.bcos.credit.util.Tools;
 import org.bcos.credit.web3j.Credit;
 import org.bcos.credit.web3j.CreditSignersData;
-import org.fisco.bcos.web3j.protocol.core.RemoteCall;
-import org.fisco.bcos.web3j.tuples.generated.Tuple8;
+import org.fisco.bcos.web3j.tuples.generated.Tuple10;
 import org.fisco.bcos.web3j.tx.gas.StaticGasProvider;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -82,9 +82,6 @@ public class BcosApp {
             creditSignersData = CreditSignersData.deploy(web3j, credentials, new StaticGasProvider(gasPrice, gasLimited), arrayList).send();
 			String address = creditSignersData.getContractAddress();
 			System.out.println("-----------deploy SignersData Contract success, address: " + address);
-			Mortgage mor  = Mortgage.deploy(web3j, credentials,new StaticGasProvider(gasPrice, gasLimited), true).send();
-			address = mor.getContractAddress();
-			System.out.println("-----------deploy Mortgage Contract success, address: " + address);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -173,7 +170,7 @@ public class BcosApp {
         Credit credit = Credit.load(transactionHash, web3j, credentials,  gasPrice, gasLimited);
 		CreditData creditData = new CreditData();
 		try {
-			Tuple8<BigInteger, String, Boolean, BigInteger, List<BigInteger>, List<byte[]>, List<byte[]>, List<String>> result2 = credit.getCredit().send();
+			Tuple10<BigInteger, String, Boolean, BigInteger, List<BigInteger>, List<byte[]>, List<byte[]>, List<String>, String, String> result2 = credit.getCredit().send();
 			if (result2 == null)
 				return null;
 			//证据字段为6个
@@ -181,6 +178,8 @@ public class BcosApp {
             creditData.setCompanyName(result2.getValue2());
             creditData.setPledge(result2.getValue3());
 			creditData.setCompanyValue(result2.getValue4());
+			creditData.setAddBorrow(result2.getValue9());
+			creditData.setAddMortgage(result2.getValue10());
 			List<BigInteger> vlist = result2.getValue5();
 			List<byte[]> rlist = result2.getValue6();
 			List<byte[]> slist = result2.getValue7();
@@ -304,5 +303,30 @@ public class BcosApp {
 		}
 		Mortgage mor = Mortgage.load(add, web3j, credentials, gasPrice, gasLimited);
 		return mor;
+	}
+
+	public Boolean borrowMoney(String keyStoreFileName, String keyStorePassword, String keyPassword, String transactionHash, BigInteger time, BigInteger loan_num) {
+		if (web3j == null)
+			return false;
+		Credentials credentials = loadkey(keyStoreFileName, keyStorePassword, keyPassword);
+		if (credentials == null) {
+			return false;
+		}
+
+		Borrow borrow = null;
+		try {
+			borrow = Borrow.deploy(web3j, credentials, new StaticGasProvider(gasPrice, gasLimited), transactionHash, time, loan_num).send();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try{
+		Boolean flag = borrow.getFlag().send();
+		return flag;
+	    } catch (Exception e) {
+		    e.printStackTrace();
+	    }
+
+		return true;
 	}
 }

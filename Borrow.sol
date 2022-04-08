@@ -1,20 +1,28 @@
 pragma solidity ^0.4.4;
 
 import "./Credit.sol";
+import"./Mortgage.sol";
 
 contract Borrow{
     Credit cre;
     uint256 month;
     int256 money;
     bool flag;
-    uint256 t = now;
+    uint256 t;
 
     function Borrow(address add, uint256 time, int256 num) public{
         cre = Credit(add);
         month = time;
         money = num;
-        flag = true;
-        cre.setBorrow(address(this));
+        if(cre.getGrade() < 60) return ;
+        Mortgage m = new Mortgage(add, num);
+        if(m.getSuc()){
+            flag = true;
+            t = now;
+            cre.setBorrow(address(this));
+        }else{
+            flag = false;
+        }
     }
 
 

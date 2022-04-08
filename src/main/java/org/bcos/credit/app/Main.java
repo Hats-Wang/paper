@@ -3,6 +3,7 @@ package org.bcos.credit.app;
 import java.math.BigInteger;
 import java.util.List;
 import org.bcos.credit.sample.CreditData;
+import org.bcos.credit.web3j.Borrow;
 import org.bcos.credit.web3j.Mortgage;
 import org.fisco.bcos.web3j.abi.datatypes.Address;
 
@@ -61,6 +62,8 @@ public class Main {
                 System.out.println("the CompanyValue: " + creditData.getCompanyValue());
                 if (creditData.getPledge()) {
                     System.out.println("the Company is pledged.");
+                    System.out.println("the Company borrow contract address:" + creditData.getAddBorrow());
+                    System.out.println("the Company mortgage contract address:" + creditData.getAddMortgage());
                 } else {
                     System.out.println("the Company is not pledged.");
                 }
@@ -87,18 +90,14 @@ public class Main {
                 }
                 break;
 
-            case "mortgage":
-                //传入参数为1.私钥文件名 2.keyStorePassword 3.keyPassword 4.newCredit返回地址 5.Mortgage返回地址 6抵押金额
-                creditData1 = app.getCredit(args[1], args[2], args[3], args[4]);
-                Mortgage mor = app.loadMortgage(args[1], args[2], args[3],args[5]);
-                mor.mortgage(args[4],new BigInteger(args[6])).send();
-                Boolean f = mor.getSuc().send();
-                if(f)
-                    System.out.println("company is mortgageed successfully!");
+            case "borrow":
+                //传入参数为1.私钥文件名 2.keyStorePassword 3.keyPassword 4.newCredit返回地址  5.time时间长短  6.loan_num贷款额度
+                Boolean ok = app.borrowMoney(args[1], args[2], args[3], args[4], new BigInteger(args[5]), new BigInteger(args[6]));
+                if(ok)
+                    System.out.println("Company borrow money successfully!" + ok);
                 else
-                    System.out.println("company is mortgaged abortively!");
+                    System.out.println("Company failed to borrow money!" + ok);
                 break;
-
 
             case "getPublicKey":
                 String publicKey = app.getPublicKey(args[1], args[2], args[3]);
